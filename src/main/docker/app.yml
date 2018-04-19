@@ -1,0 +1,14 @@
+version: '2'
+services:
+    jhipstersampleapplicationmono-app:
+        image: jhipstersampleapplicationmono
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://jhipstersampleapplicationmono-mysql:3306/jhipstersampleapplicationmono?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jhipstersampleapplicationmono-mysql:
+        extends:
+            file: mysql.yml
+            service: jhipstersampleapplicationmono-mysql
